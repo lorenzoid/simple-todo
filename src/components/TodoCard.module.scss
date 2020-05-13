@@ -1,0 +1,18 @@
+.todoCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  input {
+    margin-right: auto;
+  }
+}
+
+.categoryLabel {
+  margin-left: auto;
+}
+
+.crossOut {
+  text-decoration: line-through;
+  color: lightgray;
+}
