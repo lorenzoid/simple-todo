@@ -19,9 +19,7 @@ There are 2 reducers I created:
 - todoReducer for all things related to the todo (essentially just the todoList)
 - categoriesRedcuer for all things related to categories.
 
-########################
-
-Todo App for Lumen5
+# Todo App for Lumen5
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
