@@ -1,17 +1,24 @@
 import React, { Fragment, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addTodo } from '../reducers/todoReducer/actions';
+import { addCategory, selectCategory } from '../reducers/categoryReducer/actions';
 
 export const AddTodoForm = () => {
   const dispatch = useDispatch();
   const [content, setContent] = useState('');
-  const [category, setCategory] = useState('home');
+  const [categoryName, setCategoryName] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addTodo({ content, category }));
+
+    dispatch(addCategory({ categoryName })).then((category) => {
+      dispatch(addTodo({ content, category }));
+    });
+
+    dispatch(selectCategory('all'));
+
     setContent('');
-    setCategory('home');
+    setCategoryName('');
   };
 
   return (
@@ -25,6 +32,7 @@ export const AddTodoForm = () => {
         </div>
         <div>
           <input
+            required
             className="uk-input"
             placeholder="task"
             type="text"
@@ -33,10 +41,14 @@ export const AddTodoForm = () => {
           />
         </div>
         <div>
-          <select className="uk-select" value={category} onChange={(e) => setCategory(e.target.value)}>
-            <option value="home">home</option>
-            <option value="work">work</option>
-          </select>
+          <input
+            required
+            className="uk-input"
+            placeholder="category"
+            type="text"
+            onChange={(e) => setCategoryName(e.target.value)}
+            value={categoryName}
+          />
         </div>
       </form>
     </Fragment>

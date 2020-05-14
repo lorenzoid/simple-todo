@@ -1,37 +1,38 @@
-import React, { useState } from 'react';
+import classNames from 'classnames';
+import React from 'react';
 import { useSelector } from 'react-redux';
+import styles from './App.module.css';
 import { AddTodoForm } from './components/AddTodoForm';
 import { CategorySelector } from './components/CategorySelector';
 import { TodoCard } from './components/TodoCard';
-import classNames from 'classnames';
-import styles from './App.module.css';
 
 const App = () => {
   const { todoList } = useSelector((state) => state.todos);
-  const [category, setCategory] = useState('all');
-
-  const filteredTodos = () => {
-    return category === 'all' ? todoList : todoList.filter((todo) => todo.category === category);
-  };
+  const { selectedCategory } = useSelector((state) => state.categories);
 
   const mainWrapperStyles = classNames({
     'uk-animation-fade': true,
     'uk-container': true
   });
 
+  const renderTodoList = () => {
+    let list;
+
+    if (selectedCategory === 'all') {
+      list = todoList;
+    } else {
+      list = todoList.filter((todo) => todo.category === selectedCategory);
+    }
+
+    return list.map((todo) => <TodoCard key={todo.id} data={todo} />);
+  };
+
   return (
     <div className={mainWrapperStyles}>
       <div className="uk-card-default uk-card-body">
         <h1 className={styles.title}>Todo</h1>
-        <CategorySelector changeHandler={setCategory} category={category} />
-
-        <div className={styles.todos}>
-          {filteredTodos().length ? (
-            filteredTodos().map((todo) => <TodoCard key={todo.id} data={todo} />)
-          ) : (
-            <p>No tasks at the moment...</p>
-          )}
-        </div>
+        <CategorySelector />
+        <div className={styles.todos}>{renderTodoList()}</div>
         <AddTodoForm />
       </div>
     </div>

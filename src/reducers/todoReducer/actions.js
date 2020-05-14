@@ -7,7 +7,7 @@ export const addTodo = ({ content, category }) => {
       type: CREATE_TODO,
       newTodo: {
         id: uuidv4(),
-        category,
+        category: category.id,
         content,
         isCompleted: false
       }
