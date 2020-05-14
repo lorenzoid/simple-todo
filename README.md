@@ -1,3 +1,21 @@
+# Todo App for Lumen5
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### `yarn start`
+
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
+
+## Answers to Questions 4 and 5
+
 Question 4:
 What are the different components that you would use to render this app:
 
@@ -18,19 +36,3 @@ There are 2 reducers I created:
 
 - todoReducer for all things related to the todo (essentially just the todoList)
 - categoriesRedcuer for all things related to categories.
-
-# Todo App for Lumen5
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
